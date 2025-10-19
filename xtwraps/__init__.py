@@ -1,11 +1,11 @@
 # !/usr/bin/env python3
 """
 ==============================================================
-Description  : nswrapslite - Python装饰器工具库
+Description  : xtwraps - Python装饰器工具库
 Develop      : VSCode
 Author       : sandorn sandorn@live.cn
 LastEditTime : 2025-10-01 17:15:00
-Github       : https://github.com/sandorn/nswrapslite
+Github       : https://github.com/sandorn/xtwraps
 
 Python装饰器工具库，提供各种实用的函数装饰器，包括：
 - 异常处理（exc_wraps）
@@ -34,7 +34,7 @@ from .cache import cache_wrapper
 from .exception import exception_wraps
 from .executor import async_executor, await_future_with_timeout, run_on_executor, syncify, to_future
 from .factory import decorator_factory, exc_wrapper_factory, log_wrapper_factory, timer_wrapper_factory
-from .log import logging_wraps
+from .log import log_wraps, logging_wraps
 from .retry import retry_future, retry_wraps, spider_retry
 from .singleton import SingletonMeta, SingletonMixin, SingletonWraps, singleton
 from .strategy import TimerStrategy, UnifiedWrapper
@@ -42,10 +42,9 @@ from .tenacityretry import TRETRY, tenacity_retry_wraps
 from .timer import TimerWrapt, timer, timer_wraps
 from .utils import get_function_location, get_function_signature, is_async_function, is_sync_function
 from .validate import TypedProperty, ensure_initialized, readonly, type_check, type_check_wrapper, typed_property
-from .wrapped import decorator_transformer, timing_decorator
 
 # 版本信息
-__version__ = '0.2.0'
+__version__ = '0.2.1'
 __author__ = 'sandorn'
 __email__ = 'sandorn@live.cn'
 
@@ -62,7 +61,6 @@ __all__ = (
     'await_future_with_timeout',
     'cache_wrapper',
     'decorator_factory',
-    'decorator_transformer',
     'ensure_initialized',
     'exc_wrapper_factory',
     'exception_wraps',
@@ -71,6 +69,7 @@ __all__ = (
     'is_async_function',
     'is_sync_function',
     'log_wrapper_factory',
+    'log_wraps',
     'logging_wraps',
     'readonly',
     'retry_future',
@@ -83,7 +82,6 @@ __all__ = (
     'timer',
     'timer_wrapper_factory',
     'timer_wraps',
-    'timing_decorator',
     'to_future',
     'type_check',
     'type_check_wrapper',

@@ -5,7 +5,7 @@ Description  : 重试机制模块 - 提供函数执行失败自动重试功能
 Develop      : VSCode
 Author       : sandorn sandorn@live.cn
 LastEditTime : 2025-10-01 14:30:00
-Github       : https://github.com/sandorn/nswrapslite
+Github       : https://github.com/sandorn/xtwraps
 
 本模块提供以下核心功能：
 - RetryStrategy：重试策略类，定义重试逻辑和参数
@@ -26,7 +26,7 @@ Github       : https://github.com/sandorn/nswrapslite
 from __future__ import annotations
 
 import asyncio
-import http
+import http.client
 import socket
 import time
 import traceback
@@ -317,8 +317,8 @@ def get_retry_exceptions(include_requests: bool = True, include_aiohttp: bool = 
         http.client.HTTPException,  # HTTP协议异常
     )
 
-    requests_exceptions = ()
-    aiohttp_exceptions = ()
+    # requests_exceptions = ()
+    # aiohttp_exceptions = ()
 
     # 动态添加requests异常
     if include_requests:
@@ -337,7 +337,7 @@ def get_retry_exceptions(include_requests: bool = True, include_aiohttp: bool = 
                 requests.exceptions.ContentDecodingError,
             )
         except ImportError:
-            pass
+            requests_exceptions = ()
 
     # 动态添加aiohttp异常
     if include_aiohttp:
@@ -357,7 +357,7 @@ def get_retry_exceptions(include_requests: bool = True, include_aiohttp: bool = 
                 asyncio.TimeoutError,
             )
         except ImportError:
-            pass
+            aiohttp_exceptions = ()
 
     # 动态添加urllib3异常
     try:

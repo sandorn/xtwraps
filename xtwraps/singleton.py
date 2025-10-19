@@ -5,7 +5,7 @@ Description  : 线程安全的单例模式实现模块 - 提供多种单例模�
 Develop      : VSCode
 Author       : sandorn sandorn@live.cn
 LastEditTime : 2025-10-01 14:15:00
-Github       : https://github.com/sandorn/nswrapslite
+Github       : https://github.com/sandorn/xtwraps
 
 本模块提供以下核心功能：
 - SingletonMeta：线程安全的单例元类，支持异步初始化

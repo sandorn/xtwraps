@@ -5,7 +5,7 @@ Description  : 计时工具模块 - 提供函数执行耗时自动记录功能
 Develop      : VSCode
 Author       : sandorn sandorn@live.cn
 LastEditTime : 2025-09-11 14:30:00
-Github       : https://github.com/sandorn/nswrapslite
+Github       : https://github.com/sandorn/xtwraps
 
 本模块提供以下核心功能：
 - timer_wraps：自动记录函数执行耗时的装饰器

@@ -1,13 +1,13 @@
 # !/usr/bin/env python3
 """
 ==============================================================
-Description  : nswrapslite模块高级功能示例
+Description  : xtwraps模块高级功能示例
 Develop      : VSCode
 Author       : sandorn sandorn@live.cn
 LastEditTime : 2025-10-01 13:15:00
-Github       : https://github.com/sandorn
+Github       : https://github.com/sandorn/xtwraps
 
-演示nswrapslite模块中的高级装饰器使用方法
+演示xtwraps模块中的高级装饰器使用方法
 ==============================================================
 """
 
@@ -18,7 +18,7 @@ import time
 
 from xtlog import mylog
 
-from nswrapslite import async_executor, cache_wrapper, exception_wraps, logging_wraps
+from xtwraps import async_executor, cache_wrapper, exception_wraps, logging_wraps
 
 # 配置日志级别
 mylog.set_level('INFO')
@@ -61,7 +61,7 @@ def demo_exception_handler():
     """演示异常处理装饰器的使用"""
     print('\n=== 异常处理装饰器示例 ===')
 
-    @exception_wraps(re_raise=False, default_return='操作失败')
+    @exception_wraps(re_raise=False, custom_message='操作失败')
     def risky_operation(should_fail: bool = False) -> str:
         """一个可能失败的操作"""
         if should_fail:

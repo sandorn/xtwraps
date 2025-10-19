@@ -5,7 +5,7 @@ Description  : 重试机制模块 - 提供函数执行失败自动重试功能�
 Develop      : VSCode
 Author       : sandorn sandorn@live.cn
 LastEditTime : 2025-09-06 11:30:00
-Github       : https://github.com/sandorn/nswrapslite
+Github       : https://github.com/sandorn/xtwraps
 
 本模块提供以下核心功能：
 - tenacity_retry_wraps：函数重试装饰器，同时支持同步和异步函数

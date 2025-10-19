@@ -5,7 +5,7 @@ Description  : 异步执行器模块 - 提供函数在不同执行器上的调�
 Develop      : VSCode
 Author       : sandorn sandorn@live.cn
 LastEditTime : 2025-10-01 17:00:00
-Github       : https://github.com/sandorn/nswrapslite
+Github       : https://github.com/sandorn/xtwraps
 
 本模块提供以下核心功能：
 - async_executor：异步执行器装饰器，支持同步和异步函数

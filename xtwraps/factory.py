@@ -5,7 +5,7 @@ Description  : 装饰器工厂模块 - 提供装饰器创建和管理功能
 Develop      : VSCode
 Author       : sandorn sandorn@live.cn
 LastEditTime : 2025-10-01 15:00:00
-Github       : https://github.com/sandorn/nswrapslite
+Github       : https://github.com/sandorn/xtwraps
 
 本模块提供以下核心功能：
 - decorator_factory：装饰器工厂类，管理装饰器的创建和配置

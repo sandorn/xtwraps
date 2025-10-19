@@ -14,7 +14,7 @@ from typing import Any
 
 from xtlog import mylog
 
-from nswrapslite.strategy import AsyncWrapper, SyncWrapper, TimerStrategy, UnifiedWrapper
+from xtwraps.strategy import AsyncWrapper, SyncWrapper, TimerStrategy, UnifiedWrapper
 
 # 配置日志级别
 mylog.set_level('INFO')

@@ -5,7 +5,7 @@ Description  : 缓存装饰器模块 - 提供函数结果缓存功能
 Develop      : VSCode
 Author       : sandorn sandorn@live.cn
 LastEditTime : 2025-10-01 15:45:00
-Github       : https://github.com/sandorn/nswrapslite
+Github       : https://github.com/sandorn/xtwraps
 
 本模块提供以下核心功能：
 - cache_wrapper：函数结果缓存装饰器，基于functools.lru_cache
@@ -58,6 +58,23 @@ def cache_wrapper(maxsize: int | None = 128, typed: bool = False, ttl: int | Non
     return CacheWrapper(maxsize=maxsize, typed=typed, ttl=ttl)
 
 
+def _hashable_repr(obj):
+    """将对象转换为可哈希的字符串表示"""
+    import json
+
+    try:
+        # 尝试直接使用对象（如果它已经是可哈希的）
+        hash(obj)
+        return obj
+    except TypeError:
+        # 如果对象不可哈希，使用JSON序列化
+        try:
+            return json.dumps(obj, sort_keys=True, default=str)
+        except (TypeError, ValueError):
+            # 如果JSON序列化失败，使用字符串表示
+            return str(obj)
+
+
 def _make_cache_key(args: tuple, kwargs: dict, typed: bool) -> tuple:
     """生成缓存键
 
@@ -69,16 +86,27 @@ def _make_cache_key(args: tuple, kwargs: dict, typed: bool) -> tuple:
     Returns:
         tuple: 缓存键
     """
-    key = args
+    # 处理位置参数
+    key_parts = []
+    for arg in args:
+        key_parts.append(_hashable_repr(arg))
+
+    # 处理关键字参数
     if kwargs:
-        key += tuple(sorted(kwargs.items()))
+        # 对kwargs进行排序以确保一致性
+        sorted_kwargs = sorted(kwargs.items())
+        for k, v in sorted_kwargs:
+            key_parts.append((k, _hashable_repr(v)))
 
+    # 处理类型信息
     if typed:
-        key += tuple(type(arg) for arg in args)
+        for arg in args:
+            key_parts.append(type(arg).__name__)
         if kwargs:
-            key += tuple(type(v) for v in kwargs.values())
+            for v in kwargs.values():
+                key_parts.append(type(v).__name__)
 
-    return key
+    return tuple(key_parts)
 
 
 class CacheWrapper(UnifiedWrapper):
@@ -148,14 +176,14 @@ class CacheWrapper(UnifiedWrapper):
         # 检查缓存
         if key in self.cache:
             cached_result, timestamp = self.cache[key]
-            if ttl is None or (asyncio.get_event_loop().time() - timestamp) < ttl:
+            if ttl is None or (asyncio.get_running_loop().time() - timestamp) < ttl:
                 return cached_result
 
         # 执行函数
         result = await func(*args, **kwargs)
 
         # 更新缓存
-        self.cache[key] = (result, asyncio.get_event_loop().time())
+        self.cache[key] = (result, asyncio.get_running_loop().time())
 
         # 清理缓存
         self._clean_cache()
@@ -167,7 +195,14 @@ class CacheWrapper(UnifiedWrapper):
         maxsize = self.config.get('maxsize', 128)
         ttl = self.config.get('ttl')
 
-        current_time = asyncio.get_event_loop().time() if hasattr(asyncio, 'get_event_loop') else time.time()
+        # 使用更安全的方式获取当前时间，兼容Python 3.14
+        try:
+            # 尝试获取事件循环时间（仅在异步上下文中）
+            loop = asyncio.get_running_loop()
+            current_time = loop.time()
+        except RuntimeError:
+            # 如果没有运行的事件循环，使用系统时间
+            current_time = time.time()
 
         # 清理过期缓存
         if ttl is not None:

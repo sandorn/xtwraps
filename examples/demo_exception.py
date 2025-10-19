@@ -21,7 +21,7 @@ from typing import Any
 from xtlog import mylog
 
 # 导入 exception 模块中的函数
-from nswrapslite.exception import exception_wraps, handle_exception
+from xtwraps.exception import exception_wraps, handle_exception
 
 # 配置日志级别
 mylog.set_level('INFO')
@@ -249,7 +249,7 @@ def demo_real_world_application() -> None:
             # 随机模拟连接失败
             import random
 
-            if random.random() < 0.3:  # 30% 的概率连接失败
+            if random.random() < 0.3:  # 30% 的概率连接失败 # noqa: S311
                 raise ConnectionError('数据库连接失败')
             self.connected = True
             return True

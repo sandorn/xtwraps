@@ -5,7 +5,7 @@ Description  : 异常处理模块 - 提供异常捕获和处理功能
 Develop      : VSCode
 Author       : sandorn sandorn@live.cn
 LastEditTime : 2025-10-01 15:30:00
-Github       : https://github.com/sandorn/nswrapslite
+Github       : https://github.com/sandorn/xtwraps
 
 本模块提供以下核心功能：
 - handle_exception：异常处理函数，记录异常信息

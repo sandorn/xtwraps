@@ -5,7 +5,7 @@ Description  : 核心工具函数模块
 Develop      : VSCode
 Author       : sandorn sandorn@live.cn
 LastEditTime : 2025-09-28 16:41:00
-Github       : https://github.com/sandorn/nswrapslite
+Github       : https://github.com/sandorn/xtwraps
 
 提供核心工具函数，支持装饰器实现。
 ==============================================================
@@ -245,7 +245,7 @@ def _get_fallback_location(func: Callable[..., Any], error: Exception | None) ->
 
 __all__ = [
     'get_function_location',
+    'get_function_signature',
     'is_async_function',
     'is_sync_function',
-    'get_function_signature',
 ]

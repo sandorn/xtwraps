@@ -5,7 +5,7 @@ Description  : 属性验证和类型检查模块 - 提供变量初始化检查�
 Develop      : VSCode
 Author       : sandorn sandorn@live.cn
 LastEditTime : 2025-10-01 13:00:00
-Github       : https://github.com/sandorn/nswrapslite
+Github       : https://github.com/sandorn/xtwraps
 
 本模块提供以下核心功能：
 - ensure_initialized：确保对象属性已初始化的装饰器

@@ -5,7 +5,7 @@ Description  : 日志装饰器模块 - 提供函数执行日志记录功能
 Develop      : VSCode
 Author       : sandorn sandorn@live.cn
 LastEditTime : 2025-10-01 14:45:00
-Github       : https://github.com/sandorn/nswrapslite
+Github       : https://github.com/sandorn/xtwraps
 
 本模块提供以下核心功能：
 - logging_wraps：函数执行日志装饰器，支持同步和异步函数
@@ -125,5 +125,6 @@ def logging_wraps(
     return decorator(func) if func else decorator
 
 
+log_wraps = logging_wraps
 # 导出模块公共接口
-__all__ = ['logging_wraps']
+__all__ = ['log_wraps', 'logging_wraps']

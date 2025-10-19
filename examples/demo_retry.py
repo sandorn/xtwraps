@@ -22,7 +22,7 @@ import requests
 from xtlog import mylog
 
 # 导入retry模块中的功能和日志模块
-from nswrapslite import retry_future, retry_request, retry_wraps, spider_retry
+from xtwraps import retry_future, retry_wraps, spider_retry
 
 # 配置日志级别
 mylog.set_level('INFO')

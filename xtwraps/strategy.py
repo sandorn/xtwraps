@@ -5,7 +5,7 @@ Description  : 装饰器策略基类模块 - 提供装饰器实现的核心策�
 Develop      : VSCode
 Author       : sandorn sandorn@live.cn
 LastEditTime : 2025-10-01 14:00:00
-Github       : https://github.com/sandorn/nswrapslite
+Github       : https://github.com/sandorn/xtwraps
 
 本模块提供以下核心功能：
 - BaseWrapper：装饰器基类，提供装饰器的通用逻辑和接口
