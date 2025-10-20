@@ -33,11 +33,7 @@ repository = "https://github.com/sandorn/xtwraps"
 documentation = "https://github.com/sandorn/xtwraps/wiki"
 
 [project.optional-dependencies]
-test = [
-    "pytest>=7.3.0",
-    "pytest-asyncio>=0.21.0",
-    "pytest-cov>=4.1.0",
-]
+test = []
 
 [build-system]
 requires = ["setuptools>=61.0"]
